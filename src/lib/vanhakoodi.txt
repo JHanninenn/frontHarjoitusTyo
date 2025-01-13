@@ -1,0 +1,1897 @@
+Painike
+
+<script>
+
+export let teksti = `More information about the Champion: `
+let naytaTeksti = false;
+
+function tekstiArvo() {
+  naytaTeksti = true;
+}
+
+
+</script>
+
+<main>
+
+  <button on:click={tekstiArvo}>Näytä Lisää</button>    
+    {#if naytaTeksti === true}
+     <br> {teksti}
+    {/if}
+
+</main>
+
+<style>
+
+
+
+</style>
+
+
+
+
+Otsikko
+<script>
+
+
+
+</script>
+
+<main>
+
+<h1>Random LoL Champion</h1>
+
+</main>
+
+<style>
+
+h1 {
+  color:rgb(255, 213, 77);
+}
+
+
+</style>
+
+
+
+Lista
+
+<script>
+
+  import Painike from './Painike.svelte';
+
+import { slide, fade } from 'svelte/transition';
+
+let lista = [
+  {
+    Name: 'Aatrox',
+    Release: '2013', 
+    Gender: 'Male', 
+    Lane: 'Top', 
+    Species: 'Darkin',
+    Resource: 'Manaless',
+    Range: 'Melee',
+    Region: 'Runeterra, Shurima', 
+  },
+  {
+    Name: 'Ahri',
+    Release: '2011', 
+    Gender: 'Female', 
+    Lane: 'Middle', 
+    Species: 'Vastayan',
+    Resource: 'Mana',
+    Range: 'Ranged',
+    Region: 'Ionia', 
+  },
+  {
+    Name: 'Akali',
+    Release: '2010',
+    Gender: 'Female',
+    Lane: 'Middle, Top',
+    Species: 'Human',
+    Resource: 'Energy',
+    Range: 'Melee',
+    Region: 'Ionia',
+  },
+  {
+    Name: 'Akshan',
+    Release: '2021',
+    Gender: 'Male',
+    Lane: 'Middle, Top',
+    Species: 'Human',
+    Resource: 'Mana',
+    Range: 'Ranged',
+    Region: 'Shurima',
+  },
+  {
+    Name: 'Alistar',
+    Release: '2009',
+    Gender: 'Male',
+    Lane: 'Support',
+    Species: 'Minotaur',
+    Resource: 'Mana',
+    Range: 'Melee',
+    Region: 'Runeterra',
+  },
+  {
+    Name: 'Amumu',
+    Release: '2009',
+    Gender: 'Male',
+    Lane: 'Jungle, Support',
+    Species: 'Undead, Yordle',
+    Resource: 'Mana',
+    Range: 'Melee',
+    Region: 'Shurima',
+  },
+  {
+    Name: 'Anivia',
+    Release: '2009',
+    Gender: 'Female',
+    Lane: 'Middle',
+    Species: 'God, Spirit',
+    Resource: 'Mana',
+    Range: 'Ranged',
+    Region: 'Freljord',
+  },
+  {
+    Name: 'Annie',
+    Release: '2009',
+    Gender: 'Female',
+    Lane: 'Middle, Support',
+    Species: 'Human, Magicborn',
+    Resource: 'Mana',
+    Range: 'Ranged',
+    Region: 'Noxus, Runeterra',
+  },
+  {
+    Name: 'Aphelios',
+    Release: '2019',
+    Gender: 'Male',
+    Lane: 'Bottom',
+    Species: 'Human, Spiritualist',
+    Resource: 'Mana',
+    Range: 'Ranged',
+    Region: 'Targon',
+  },
+  {
+    Name: 'Ashe',
+    Release: '2009',
+    Gender: 'Female',
+    Lane: 'Bottom, Support',
+    Species: 'Human, Iceborn',
+    Resource: 'Mana',
+    Range: 'Ranged',
+    Region: 'Freljord',
+  },
+  {
+    Name: 'Aurelion Sol',
+    Release: '2016',
+    Gender: 'Male',
+    Lane: 'Middle',
+    Species: 'Celestial, Dragon',
+    Resource: 'Mana',
+    Range: 'Ranged',
+    Region: 'Runeterra, Targon',
+  },
+  {
+    Name: 'Azir',
+    Release: '2014',
+    Gender: 'Male',
+    Lane: 'Middle',
+    Species: 'God-Warrior',
+    Resource: 'Mana',
+    Range: 'Ranged',
+    Region: 'Shurima',
+  },
+
+
+
+
+
+  {
+    Name: 'Bard',
+    Release: '2015',
+    Gender: 'Male',
+    Lane: 'Support',
+    Species: 'Celestial',
+    Resource: 'Mana',
+    Range: 'Ranged',
+    Region: 'Runeterra',
+  },
+  {
+    Name: `Bel'Veth`,
+    Release: '2021',
+    Gender: 'Female',
+    Lane: 'Jungle',
+    Species: 'Void-Being',
+    Resource: 'Manaless',
+    Range: 'Melee',
+    Region: 'Void',
+  },
+  {
+    Name: 'Blitzcrank',
+    Release: '2009',
+    Gender: 'Other',
+    Lane: 'Support',
+    Species: 'Golem',
+    Resource: 'Mana',
+    Range: 'Melee',
+    Region: 'Zaun',
+  },
+  {
+    Name: 'Brand',
+    Release: '2011',
+    Gender: 'Male',
+    Lane: 'Support',
+    Species: 'Human, Magically Altered',
+    Resource: 'Mana',
+    Range: 'Ranged',
+    Region: 'Freljord, Runeterra',
+  },
+  {
+    Name: 'Braum',
+    Release: '2014',
+    Gender: 'Male',
+    Lane: 'Support',
+    Species: 'Human, Iceborn',
+    Resource: 'Mana',
+    Range: 'Melee',
+    Region: 'Freljord',
+  },
+  {
+    Name: 'Briar',
+    Release: '2023',
+    Gender: 'Female',
+    Lane: 'Jungle',
+    Species: 'Golem',
+    Resource: 'Health costs',
+    Range: 'Melee',
+    Region: 'Noxus',
+  },
+  
+  
+  
+  
+  
+  {
+    Name: 'Caitlyn',
+    Release: '2011',
+    Gender: 'Female',
+    Lane: 'Bottom',
+    Species: 'Human',
+    Resource: 'Mana',
+    Range: 'Ranged',
+    Region: 'Piltover',
+  },
+  {
+    Name: 'Camille',
+    Release: '2016',
+    Gender: 'Female',
+    Lane: 'Top',
+    Species: 'Cyborg, Human',
+    Resource: 'Mana',
+    Range: 'Melee',
+    Region: 'Piltover',
+  },
+  {
+    Name: 'Cassiopeia',
+    Release: '2010',
+    Gender: 'Female',
+    Lane: 'Middle',
+    Species: 'Human, Magically Altered',
+    Resource: 'Mana',
+    Range: 'Ranged',
+    Region: 'Noxus, Shurima',
+  },
+  {
+    Name: `Cho'Gath`,
+    Release: '2009',
+    Gender: 'Male',
+    Lane: 'Top',
+    Species: 'Void-Being',
+    Resource: 'Mana',
+    Range: 'Melee',
+    Region: 'Void',
+  },
+  {
+    Name: 'Corki',
+    Release: '2009',
+    Gender: 'Male',
+    Lane: 'Middle',
+    Species: 'Yordle',
+    Resource: 'Mana',
+    Range: 'Ranged',
+    Region: '2009',
+  },
+
+
+
+
+
+  {
+    Name: 'Darius',
+    Release: '2012',
+    Gender: 'Male',
+    Lane: 'Top',
+    Species: 'Human',
+    Resource: 'Mana',
+    Range: 'Melee',
+    Region: 'Noxus',
+  },
+  {
+    Name: 'Diana',
+    Release: '2012',
+    Gender: 'Female',
+    Lane: 'Jungle, Middle',
+    Species: 'Aspect, Human',
+    Resource: 'Mana',
+    Range: 'Melee',
+    Region: 'Targon',
+  },
+  {
+    Name: 'Dr.Mundo',
+    Release: '2009',
+    Gender: 'Male',
+  
+    Lane: 'Top',
+    Species: 'Chemically Altered, Human',
+    Resource: 'Health costs',
+    Range: 'Melee',
+    Region: 'Zaun',
+  },
+  {
+    Name: 'Draven',
+    Release: '2012',
+    Gender: 'Male',
+    Lane: 'Bottom',
+    Species: 'Human',
+    Resource: 'Mana',
+    Range: 'Ranged',
+    Region: 'Noxus',
+  },
+
+
+
+
+
+  {
+    Name: 'Ekko',
+    Release: '2015',
+    Gender: 'Male',
+    Lane: 'Jungle, Middle',
+    Species: 'Human',
+    Resource: 'Mana',
+    Range: 'Melee',
+    Region: 'Zaun',
+  },
+  {
+    Name: 'Elise',
+    Release: '2012',
+    Gender: 'Female',
+    Lane: 'Jungle',
+    Species: 'Human, Magically Altered',
+    Resource: 'Mana',
+    Range: 'Melee, Ranged',
+    Region: 'Nosux, Shadow Isles',
+  },
+  {
+    Name: 'Evelynn',
+    Release: '2009',
+    Gender: 'Female',
+    Lane: 'Jungle',
+    Species: 'Demon, Spirit',
+    Resource: 'Mana',
+    Range: 'Melee',
+    Region: 'Runeterra',
+  },
+  {
+    Name: 'Ezreal',
+    Release: '2012',
+    Gender: 'Male',
+    Lane: 'Bottom',
+    Species: 'Human, Magicborn',
+    Resource: 'Mana',
+    Range: 'Ranged',
+    Region: 'Piltover',
+  },
+
+
+
+
+
+  {
+    Name: 'Fiddlesticks',
+    Release: '2009',
+    Gender: 'Other',
+    Lane: 'Jungle',
+    Species: 'Demon, Spirit',
+    Resource: 'Mana',
+    Range: 'Ranged',
+    Region: 'Runeterra',
+  },
+  {
+    Name: 'Fiora',
+    Release: '2012',
+    Gender: 'Female',
+    Lane: 'Top',
+    Species: 'Human',
+    Resource: 'Mana',
+    Range: 'Melee',
+    Region: 'Demacia',
+  },
+  {
+    Name: 'Fizz',
+    Release: '2011',
+    Gender: 'Male',
+    Lane: 'Middle',
+    Species: 'Yordle',
+    Resource: 'Mana',
+    Range: 'Melee',
+    Region: 'Bilgewater',
+  },
+  {
+    Name: 'Galio',
+    Release: '2010',
+    Gender: 'Male',
+    Lane: 'Middle, Support',
+    Species: 'Golem',
+    Resource: 'Mana',
+    Range: 'Melee',
+    Region: 'Demacia',
+  },
+  {
+    Name: 'Gangplank',
+    Release: '2009',
+    Gender: 'Male',
+    Lane: 'Top',
+    Species: 'Human',
+    Resource: 'Mana',
+    Range: 'Melee',
+    Region: 'Bilgewater',
+  },
+  {
+    Name: 'Garen',
+    Release: '2010',
+    Gender: 'Male',
+    Lane: 'Top',
+    Species: 'Human',
+    Resource: 'Manaless',
+    Range: 'Melee',
+    Region: 'Demacia',
+  },
+  {
+    Name: 'Gnar',
+    Release: '2014',
+    Gender: 'Male',
+    Lane: 'Top',
+    Species: 'Yordle',
+    Resource: 'Rage',
+    Range: 'Melee, Ranged',
+    Region: 'Freljord',
+  },
+  {
+    Name: 'Gragas',
+    Release: '2010',
+    Gender: 'Male',
+    Lane: 'Jungle, Top',
+    Species: 'Human',
+    Resource: 'Mana',
+    Range: 'Melee',
+    Region: 'Freljord',
+  },
+  {
+    Name: 'Graves',
+    Release: '2011',
+    Gender: 'Male',
+    Lane: 'Jungle',
+    Species: 'Human',
+    Resource: 'Mana',
+    Range: 'Ranged',
+    Region: 'Bilgewater',
+  },
+  {
+    Name: 'Gwen',
+    Release: '2021',
+    Gender: 'Female',
+    Lane: 'Top',
+    Species: 'Human, Magically Altered',
+    Resource: 'Mana',
+    Range: 'Melee',
+    Region: 'Camavor, Shadow Isles',
+  },
+
+
+
+
+
+  {
+    Name: 'Hecarim',
+    Release: '2012',
+    Gender: 'Male',
+    Lane: 'Jungle',
+    Species: 'Undead',
+    Resource: 'Mana',
+    Range: 'Melee',
+    Region: 'Camavor, Shadow Isles',
+  },
+  {
+    Name: 'Heimerdinger',
+    Release: '2009',
+    Gender: 'Male',
+    Lane: 'Middle, Support, Top',
+    Species: 'Yordle',
+    Resource: 'Mana',
+    Range: 'Ranged',
+    Region: 'Piltover',
+  },
+  {
+    Name: 'Hwei',
+    Release: '2023',
+    Gender: 'Male',
+    Lane: 'Middle, Support',
+    Species: 'Human, Magicborn',
+    Resource: 'Mana',
+    Range: 'Ranged',
+    Region: 'Ionia',
+  },
+
+
+
+
+
+  {
+    Name: 'Illaoi',
+    Release: '2015',
+    Gender: 'Female',
+    Lane: 'Top',
+    Species: 'Human, Spiritualist',
+    Resource: 'Mana',
+    Range: 'Melee',
+    Region: 'Bilgewater',
+  },
+  {
+    Name: 'Irelia',
+    Release: '2010',
+    Gender: 'Female',
+    Lane: 'Middle, Top',
+    Species: 'Human, Spiritualist',
+    Resource: 'Mana',
+    Range: 'Melee',
+    Region: 'Ionia',
+  },
+  {
+    Name: 'Ivern',
+    Release: '2016',
+    Gender: 'Male',
+    Lane: 'Jungle',
+    Species: 'Human, Magically altered',
+    Resource: 'Mana',
+    Range: 'Ranged',
+    Region: 'Freljord, Ionia',
+  },
+  
+  
+  
+  
+  
+  {
+    Name: 'Janna',
+    Release: '2009',
+    Gender: 'Female',
+    Lane: 'Support',
+    Species: 'God, Spirit',
+    Resource: 'Mana',
+    Range: 'Ranged',
+    Region: 'Shurima, Zaun',
+  },
+  {
+    Name: 'Jarvan IV',
+    Release: '2011',
+    Gender: 'Male',
+    Lane: 'Jungle',
+    Species: 'Human',
+    Resource: 'Mana',
+    Range: 'Melee',
+    Region: 'Demacia',
+  },
+  {
+    Name: 'Jax',
+    Release: '2009',
+    Gender: 'Male',
+    Lane: 'Top',
+    Species: 'Unknown',
+    Resource: 'Mana',
+    Range: 'Melee',
+    Region: 'Icathia, Runeterra, Shurima',
+  },
+  {
+    Name: 'Jayce',
+    Release: '2012',
+    Gender: 'Male',
+    Lane: 'Middle, Top',
+    Species: 'Human',
+    Resource: 'Mana',
+    Range: 'Melee, Ranged',
+    Region: 'Piltover',
+  },
+  {
+    Name: 'Jhin',
+    Release: '2016',
+    Gender: 'Male',
+    Lane: 'Bottom',
+    Species: 'Human, Spiritualist',
+    Resource: 'Mana',
+    Range: 'Ranged',
+    Region: 'Ionia',
+  },
+  {
+    Name: 'Jinx',
+    Release: '2013',
+    Gender: 'Female',
+    Lane: 'Bottom',
+    Species: 'Chemically Altered, Human',
+    Resource: 'Mana',
+    Range: 'Ranged',
+    Region: 'Zaun',
+  },
+
+
+
+
+
+  {
+    Name: `K'Sante`,
+    Release: '2022',
+    Gender: 'Male',
+    Lane: 'Top',
+    Species: 'Human',
+    Resource: 'Mana',
+    Range: 'Melee',
+    Region: 'Shurima',
+  },
+  {
+    Name: `Kai'Sa`,
+    Release: '2018',
+    Gender: 'Female',
+    Lane: 'Bottom',
+    Species: 'Human, Void-Being',
+    Resource: 'Mana',
+    Range: 'Ranged',
+    Region: 'Shurima, Void',
+  },
+  {
+    Name: 'Kalista',
+    Release: '2014',
+    Gender: 'Female',
+    Lane: 'Bottom',
+    Species: 'Undead',
+    Resource: 'Mana',
+    Range: 'Ranged',
+    Region: 'Camavor, Shadow Isles',
+  },
+  {
+    Name: 'Karma',
+    Release: '2011',
+    Gender: 'Female',
+    Lane: 'Support',
+    Species: 'Human, Spiritualist',
+    Resource: 'Mana',
+    Range: 'Ranged',
+    Region: 'Ionia',
+  },
+  {
+    Name: 'Karthus',
+    Release: '2009',
+    Gender: 'Male',
+    Lane: 'Jungle',
+    Species: 'Undead',
+    Resource: 'Mana',
+    Range: 'Ranged',
+    Region: 'Noxus, Shadow Isles',
+  },
+  {
+    Name: 'Kassadin',
+    Release: '2009',
+    Gender: 'Male',
+    Lane: 'Middle',
+    Species: 'Human, Void-Being',
+    Resource: 'Mana',
+    Range: 'Melee',
+    Region: 'Shurima, Void',
+  },
+  {
+    Name: 'Katarina',
+    Release: '2009',
+    Gender: 'Female',
+    Lane: 'Middle',
+    Species: 'Human',
+    Resource: 'Manaless',
+    Range: 'Melee',
+    Region: 'Noxus',
+  },
+  {
+    Name: 'Kayle',
+    Release: '2009',
+    Gender: 'Female',
+    Lane: 'Top',
+    Species: 'Aspect, Human, Magically Altered',
+    Resource: 'Mana',
+    Range: 'Melee, Ranged',
+    Region: 'Demacia, Targon',
+  },
+  {
+    Name: 'Kayn',
+    Release: '2017',
+    Gender: 'Male',
+    Lane: 'Jungle',
+    Species: 'Darkin, Human, Magically Altered',
+    Resource: 'Mana',
+    Range: 'Melee',
+    Region: 'Ionia, Noxus, Runeterra, Shurima',
+  },
+  {
+    Name: 'Kennen',
+    Release: '2010',
+    Gender: 'Male',
+    Lane: 'Top',
+    Species: 'Yordle',
+    Resource: 'Energy',
+    Range: 'Ranged',
+    Region: 'Ionia',
+  },
+  {
+    Name: `Kha'Zix`,
+    Release: '2012',
+    Gender: 'Male',
+    Lane: 'Jungle',
+    Species: 'Void-Being',
+    Resource: 'Mana',
+    Range: 'Melee',
+    Region: 'Void',
+  },
+  {
+    Name: 'Kindred',
+    Release: '2015',
+    Gender: 'Other',
+    Lane: 'Jungle',
+    Species: 'God, Spirit',
+    Resource: 'Mana',
+    Range: 'Ranged',
+    Region: 'Runeterra',
+  },
+  {
+    Name: 'Kled',
+    Release: '2016',
+    Gender: 'Male',
+    Lane: 'Top',
+    Species: 'Yordle',
+    Resource: 'Courage',
+    Range: 'Melee',
+    Region: 'Noxus',
+  },
+  {
+    Name: `Kog'Maw`,
+    Release: '2010',
+    Gender: 'Male',
+    Lane: 'Bottom',
+    Species: 'Void-Being',
+    Resource: 'Mana',
+    Range: 'Ranged',
+    Region: 'Void',
+  },
+
+
+
+
+
+  {
+    Name: 'LeBlanc',
+    Release: '2010',
+    Gender: 'Female',
+    Lane: 'Middle',
+    Species: 'Human, Magically Altered',
+    Resource: 'Mana',
+    Range: 'Ranged',
+    Region: 'Noxus',
+  },
+  {
+    Name: 'Lee Sin',
+    Release: '2011',
+    Gender: 'Male',
+    Lane: 'Jungle',
+    Species: 'Human, Spiritualist',
+    Resource: 'Energy',
+    Range: 'Melee',
+    Region: 'Ionia',
+  },
+  {
+    Name: 'Leona',
+    Release: '2011',
+    Gender: 'Female',
+    Lane: 'Support',
+    Species: 'Aspect, Human',
+    Resource: 'Mana',
+    Range: 'Melee',
+    Region: 'Targon',
+  },
+  {
+    Name: 'Lillia',
+    Release: '2020',
+    Gender: 'Female',
+    Lane: 'Jungle',
+    Species: 'Spirit',
+    Resource: 'Mana',
+    Range: 'Melee',
+    Region: 'Ionia',
+  },
+  {
+    Name: 'Lissandra',
+    Release: '2013',
+    Gender: 'Female',
+    Lane: 'Middle',
+    Species: 'Human, Iceborn',
+    Resource: 'Mana',
+    Range: 'Ranged',
+    Region: 'Feeljord',
+  },
+  {
+    Name: 'Lucian',
+    Release: '2013',
+    Gender: 'Male',
+    Lane: 'Bottom',
+    Species: 'Human',
+    Resource: 'Mana',
+    Range: 'Ranged',
+    Region: 'Demacia, Shadow Isles',
+  },
+  {
+    Name: 'Lulu',
+    Release: '2012',
+    Gender: 'Female',
+    Lane: 'Support',
+    Species: 'Yordle',
+    Resource: 'Mana',
+    Range: 'Ranged',
+    Region: 'Bandle City',
+  },
+  {
+    Name: 'Lux',
+    Release: '2010',
+    Gender: 'Female',
+    Lane: 'Middle, Support',
+    Species: 'Human, Magicborn',
+    Resource: 'Mana',
+    Range: 'Ranged',
+    Region: 'Demacia',
+  },
+
+
+
+
+
+  {
+    Name: 'Malphite',
+    Release: '2009',
+    Gender: 'Male',
+    Lane: 'Top',
+    Species: 'Golem',
+    Resource: 'Mana',
+    Range: 'Melee',
+    Region: 'Ixtal, Shurima',
+  },
+  {
+    Name: 'Malzahar',
+    Release: '2010',
+    Gender: 'Male',
+    Lane: 'Middle',
+    Species: 'Human, Void-Being',
+    Resource: 'Mana',
+    Range: 'Ranged',
+    Region: 'Shurima, Void',
+  },
+  {
+    Name: 'Maokai',
+    Release: '2011',
+    Gender: 'Male',
+    Lane: 'Jungle, Support',
+    Species: 'Spirit',
+    Resource: 'Mana',
+    Range: 'Melee',
+    Region: 'Shadow Isles',
+  },
+  {
+    Name: 'Master Yi',
+    Release: '2009',
+    Gender: 'Male',
+    Lane: 'Jungle',
+    Species: 'Human, Spiritualist',
+    Resource: 'Mana',
+    Range: 'Melee',
+    Region: 'Ionia',
+  },
+  {
+    Name: 'Milio',
+    Release: '2023',
+    Gender: 'Male',
+    Lane: 'Support',
+    Species: 'Human, Magicborn',
+    Resource: 'Mana',
+    Range: 'Ranged',
+    Region: 'Ixtal',
+  },
+  {
+    Name: 'Miss Fortune',
+    Release: '2010',
+    Gender: 'Female',
+    Lane: 'Bottom',
+    Species: 'Human',
+    Resource: 'Mana',
+    Range: 'Ranged',
+    Region: 'Bilgewater',
+  },
+  {
+    Name: 'Mordekaiser',
+    Release: '2010',
+    Gender: 'Male',
+    Lane: 'Top',
+    Species: 'Revenant',
+    Resource: 'Shield',
+    Range: 'Melee',
+    Region: 'Noxus, Shadow Isles',
+  },
+  {
+    Name: 'Morgana',
+    Release: '2009',
+    Gender: 'Female',
+    Lane: 'Support',
+    Species: 'Aspect, Human, Magically Altered',
+    Resource: 'Mana',
+    Range: 'Ranged',
+    Region: 'Demacia, Targon',
+  },
+  {
+    Name: 'Naafiri',
+    Release: '2023',
+    Gender: 'Female',
+    Lane: 'Middle',
+    Species: 'Darkin, Dog',
+    Resource: 'Mana',
+    Range: 'Melee',
+    Region: 'Shurima',
+  },
+  {
+    Name: 'Nami',
+    Release: '2012',
+    Gender: 'Female',
+    Lane: 'Support',
+    Species: 'Vastayan',
+    Resource: 'Mana',
+    Range: 'Ranged',
+    Region: 'Bilgewater, Runeterra',
+  },
+  {
+    Name: 'Male',
+    Release: '2009',
+    Gender: 'Male',
+    Lane: 'Top',
+    Species: 'God-Warrior',
+    Resource: 'Mana',
+    Range: 'Melee',
+    Region: 'Shurima',
+  },
+  {
+    Name: 'Nautilus',
+    Release: '2012',
+    Gender: 'Male',
+    Lane: 'Support',
+    Species: 'Revenant',
+    Resource: 'Mana',
+    Range: 'Melee',
+    Region: 'Bilgewater',
+  },
+  {
+    Name: 'Neeko',
+    Release: '2018',
+    Gender: 'Female',
+    Lane: 'Middle, Support',
+    Species: 'Vastayan',
+    Resource: 'Mana',
+    Range: 'Ranged',
+    Region: 'Ixtal',
+  },
+  {
+    Name: 'Nidalee',
+    Release: '2009',
+    Gender: 'Female',
+    Lane: 'Jungle',
+    Species: 'Human, Spiritualist',
+    Resource: 'Mana',
+    Range: 'Melee, Ranged',
+    Region: 'Ixtal',
+  },
+  {
+    Name: 'Nilah',
+    Release: '2022',
+    Gender: 'Female',
+    Lane: 'Bottom',
+    Species: 'Human, Magically Altered',
+    Resource: 'Mana',
+    Range: 'Melee',
+    Region: 'Bilgewater',
+  },
+  {
+    Name: 'Nocturne',
+    Release: '2011',
+    Gender: 'Male',
+    Lane: 'Jungle',
+    Species: 'Demon, Spirit',
+    Resource: 'Mana',
+    Range: 'Melee',
+    Region: 'Runeterra',
+  },
+  {
+    Name: 'Nunu & Willump',
+    Release: '2009',
+    Gender: 'Male',
+    Lane: 'Jungle',
+    Species: 'Human, Yeti',
+    Resource: 'Mana',
+    Range: 'Melee',
+    Region: 'Freljord',
+  },
+
+
+
+
+
+  {
+    Name: 'Olaf',
+    Release: '2010',
+    Gender: 'Male',
+    Lane: 'Top',
+    Species: 'Human, Iceborn',
+    Resource: 'Mana',
+    Range: 'Melee',
+    Region: 'Freljord',
+  },
+  {
+    Name: 'Orianna',
+    Release: '2011',
+    Gender: 'Female',
+    Lane: 'Middle',
+    Species: 'Golem',
+    Resource: 'Mana',
+    Range: 'Ranged',
+    Region: 'Piltover',
+  },
+  {
+    Name: 'Ornn',
+    Release: '2017',
+    Gender: 'Male',
+    Lane: 'Top',
+    Species: 'God, Spirit',
+    Resource: 'Mana',
+    Range: 'Melee',
+    Region: 'Freljord',
+  },
+  
+  
+  
+  
+  
+  {
+    Name: 'Pantheon',
+    Release: '2010',
+    Gender: 'Male',
+    Lane: 'Middle, Support, Top',
+    Species: 'Aspect, Human',
+    Resource: 'Mana',
+    Range: 'Melee',
+    Region: 'Targon',
+  },
+  {
+    Name: 'Poppy',
+    Release: '2010',
+    Gender: 'Female',
+    Lane: 'Jungle, Top',
+    Species: 'Yordle',
+    Resource: 'Mana',
+    Range: 'Melee',
+    Region: 'Demacia',
+  },
+  {
+    Name: 'Pyke',
+    Release: '2018',
+    Gender: 'Male',
+    Lane: 'Support',
+    Species: 'Revenant',
+    Resource: 'Mana',
+    Range: 'Melee',
+    Region: 'Bilgewater',
+  },
+
+
+
+
+
+  {
+    Name: 'Qiyana',
+    Release: '2019',
+    Gender: 'Female',
+    Lane: 'Middle',
+    Species: 'Human, Magicborn',
+    Resource: 'Mana',
+    Range: 'Melee',
+    Region: 'Ixtal',
+  },
+  {
+    Name: 'Quinn',
+    Release: '2013',
+    Gender: 'Female',
+    Lane: 'Top',
+    Species: 'Human',
+    Resource: 'Mana',
+    Range: 'Ranged',
+    Region: 'Demacia',
+  },
+
+
+
+
+
+  {
+    Name: 'Rakan',
+    Release: '2017',
+    Gender: 'Male',
+    Lane: 'Support',
+    Species: 'Vastayan',
+    Resource: 'Mana',
+    Range: 'Melee',
+    Region: 'Ionia',
+  },
+  {
+    Name: 'Rammus',
+    Release: '2009',
+    Gender: 'Male',
+    Lane: 'Jungle',
+    Species: 'Unknown',
+    Resource: 'Mana',
+    Range: 'Melee',
+    Region: 'Shurima',
+  },
+  {
+    Name: `Rek'Sai`,
+    Release: '2014',
+    Gender: 'Female',
+    Lane: 'Jungle',
+    Species: 'Void-Being',
+    Resource: 'Rage',
+    Range: 'Melee',
+    Region: 'Shurima, Void',
+  },
+  {
+    Name: 'Rell',
+    Release: '2020',
+    Gender: 'Female',
+    Lane: 'Support',
+    Species: 'Human, Magically Altered, Magicborn',
+    Resource: 'Mana',
+    Range: 'Melee',
+    Region: 'Noxus',
+  },
+  {
+    Name: 'Renata Glasc',
+    Release: '2022',
+    Gender: 'Female',
+    Lane: 'Support',
+    Species: 'Chemically Altered, Human',
+    Resource: 'Mana',
+    Range: 'Ranged',
+    Region: 'Zaun',
+  },
+  {
+    Name: 'Renekton',
+    Release: '2011',
+    Gender: 'Male',
+    Lane: 'Top',
+    Species: 'God-Warrior',
+    Resource: 'Fury',
+    Range: 'Melee',
+    Region: 'Shurima',
+  },
+  {
+    Name: 'Rengar',
+    Release: '2012',
+    Gender: 'Male',
+    Lane: 'Jungle',
+    Species: 'Vastayan',
+    Resource: 'Ferocity',
+    Range: 'Melee',
+    Region: 'Ixtal, Shurima',
+  },
+  {
+    Name: 'Riven',
+    Release: '2011',
+    Gender: 'Female',
+    Lane: 'Top',
+    Species: 'Human',
+    Resource: 'Manaless',
+    Range: 'Melee',
+    Region: 'Ionia, Noxus',
+  },
+  {
+    Name: 'Rumble',
+    Release: '2011',
+    Gender: 'Male',
+    Lane: 'Top',
+    Species: 'Yordle',
+    Resource: 'Heat',
+    Range: 'Melee',
+    Region: 'Bandle City',
+  },
+  {
+    Name: 'Ryze',
+    Release: '2009',
+    Gender: 'Male',
+    Lane: 'Middle',
+    Species: 'Human, Magically Altered',
+    Resource: 'Mana',
+    Range: 'Ranged',
+    Region: 'Runeterra',
+  },
+
+
+
+
+
+  {
+    Name: 'Samira',
+    Release: '2020',
+    Gender: 'Female',
+    Lane: 'Bottom',
+    Species: 'Human',
+    Resource: 'Mana',
+    Range: 'Ranged',
+    Region: 'Noxus, Shurima',
+  },
+  {
+    Name: 'Sejuani',
+    Release: '2012',
+    Gender: 'Female',
+    Lane: 'Jungle',
+    Species: 'Human, Iceborn',
+    Resource: 'Mana',
+    Range: 'Melee',
+    Region: 'Freljord',
+  },
+  {
+    Name: 'Senna',
+    Release: '2019',
+    Gender: 'Female',
+    Lane: 'Support',
+    Species: 'Human, Undead',
+    Resource: 'Mana',
+    Range: 'Ranged',
+    Region: 'Shadow Isles',
+  },
+  {
+    Name: 'Seraphine',
+    Release: '2020',
+    Gender: 'Female',
+    Lane: 'Support',
+    Species: 'Human, Magicborn',
+    Resource: 'Mana',
+    Range: 'Ranged',
+    Region: 'Piltover, Zaun',
+  },
+  {
+    Name: 'Sett',
+    Release: '2020',
+    Gender: 'Male',
+    Lane: 'Top',
+    Species: 'Human, Vastayan',
+    Resource: 'Grit',
+    Range: 'Melee',
+    Region: 'Ionia',
+  },
+  {
+    Name: 'Shaco',
+    Release: '2009',
+    Gender: 'Male',
+    Lane: 'Jungle',
+    Species: 'Spirit',
+    Resource: 'Mana',
+    Range: 'Melee',
+    Region: 'Runeterra',
+  },
+  {
+    Name: 'Shen',
+    Release: '2010',
+    Gender: 'Male',
+    Lane: 'Top',
+    Species: 'Human, Spiritualist',
+    Resource: 'Energy',
+    Range: 'Melee',
+    Region: 'Ionia',
+  },
+  {
+    Name: 'Shyvana',
+    Release: '2011',
+    Gender: 'Female',
+    Lane: 'Jungle',
+    Species: 'Dragon, Magically Altered',
+    Resource: 'Fury',
+    Range: 'Melee',
+    Region: 'Demacia',
+  },
+  {
+    Name: 'Singed',
+    Release: '2009',
+    Gender: 'Male',
+    Lane: 'Top',
+    Species: 'Chemically Altered, Human',
+    Resource: 'Mana',
+    Range: 'Melee',
+    Region: 'Piltover, Zaun',
+  },
+  {
+    Name: 'Sion',
+    Release: '2009',
+    Gender: 'Male',
+    Lane: 'Top',
+    Species: 'Revenant',
+    Resource: 'Mana',
+    Range: 'Melee',
+    Region: 'Noxus',
+  },
+  {
+    Name: 'Sivir',
+    Release: '2009',
+    Gender: 'Female',
+    Lane: 'Bottom',
+    Species: 'Human',
+    Resource: 'Mana',
+    Range: 'Ranged',
+    Region: 'Shurima',
+  },
+  {
+    Name: 'Skarner',
+    Release: '2011',
+    Gender: 'Male',
+    Lane: 'Jungle',
+    Species: 'Brackern',
+    Resource: 'Mana',
+    Range: 'Melee',
+    Region: 'Shurima',
+  },
+  {
+    Name: 'Smolder',
+    Release: '2024',
+    Gender: 'Male',
+    Lane: 'Bottom, Top, Middle',
+    Species: 'Dragon',
+    Resource: 'Mana',
+    Range: 'Ranged',
+    Region: 'Camavor, Noxus',
+  },
+  {
+    Name: 'Sona',
+    Release: '2010',
+    Gender: 'Female',
+    Lane: 'Support',
+    Species: 'Human, Magicborn',
+    Resource: 'Mana',
+    Range: 'Ranged',
+    Region: 'Demacia, Ionia',
+  },
+  {
+    Name: 'Soraka',
+    Release: '2009',
+    Gender: 'Female',
+    Lane: 'Support',
+    Species: 'Celestial',
+    Resource: 'Mana',
+    Range: 'Ranged',
+    Region: 'Ionia, Targon',
+  },
+  {
+    Name: 'Swain',
+    Release: '2010',
+    Gender: 'Male',
+    Lane: 'Support',
+    Species: 'Human, Magically Altered',
+    Resource: 'Mana',
+    Range: 'Ranged',
+    Region: 'Noxus',
+  },
+  {
+    Name: 'Sylas',
+    Release: '2019',
+    Gender: 'Male',
+    Lane: 'Middle',
+    Species: 'Human, Magicborn',
+    Resource: 'Mana',
+    Range: 'Melee',
+    Region: 'Demacia, Freljord',
+  },
+  {
+    Name: 'Syndra',
+    Release: '2012',
+    Gender: 'Female',
+    Lane: 'Middle',
+    Species: 'Human, Magicborn',
+    Resource: 'Mana',
+    Range: 'Ranged',
+    Region: 'Ionia',
+  },
+
+
+
+
+
+  {
+    Name: 'Tahm Kench',
+    Release: '2015',
+    Gender: 'Male',
+    Lane: 'Support, Top',
+    Species: 'Demon, Spirit',
+    Resource: 'Mana',
+    Range: 'Melee',
+    Region: 'Bilgewater, Runeterra',
+  },
+  {
+    Name: 'Taliyah',
+    Release: '2016',
+    Gender: 'Female',
+    Lane: 'Jungle, Middle',
+    Species: 'Human, Magicborn',
+    Resource: 'Mana',
+    Range: 'Ranged',
+    Region: 'Shurima',
+  },
+  {
+    Name: 'Talon',
+    Release: '2011',
+    Gender: 'Male',
+    Lane: 'Jungle, Middle',
+    Species: 'Human',
+    Resource: 'Mana',
+    Range: 'Melee',
+    Region: 'Noxus',
+  },
+  {
+    Name: 'Taric',
+    Release: '2009',
+    Gender: 'Male',
+    Lane: 'Support',
+    Species: 'Aspect, Human',
+    Resource: 'Mana',
+    Range: 'Melee',
+    Region: 'Demacia, Targon',
+  },
+  {
+    Name: 'Teemo',
+    Release: '2009',
+    Gender: 'Male',
+    Lane: 'Top',
+    Species: 'Yordle',
+    Resource: 'Mana',
+    Range: 'Ranged',
+    Region: 'Bandle City',
+  },
+  {
+    Name: 'Thresh',
+    Release: '2013',
+    Gender: 'Male',
+    Lane: 'Support',
+    Species: 'Undead',
+    Resource: 'Mana',
+    Range: 'Ranged',
+    Region: 'Shadow Isles',
+  },
+  {
+    Name: 'Tristana',
+    Release: '2009',
+    Gender: 'Female',
+    Lane: 'Bottom, Middle',
+    Species: 'Yordle',
+    Resource: 'Mana',
+    Range: 'Ranged',
+    Region: 'Bandle City',
+  },
+  {
+    Name: 'Trundle',
+    Release: '2010',
+    Gender: 'Male',
+    Lane: 'Jungle, Top',
+    Species: 'Iceborn, Troll',
+    Resource: 'Mana',
+    Range: 'Melee',
+    Region: 'Freljord',
+  },
+  {
+    Name: 'Tryndamere',
+    Release: '2009',
+    Gender: 'Male',
+    Lane: 'Top',
+    Species: 'Human, Magically Altered',
+    Resource: 'Fury',
+    Range: 'Melee',
+    Region: 'Freljord',
+  },
+  {
+    Name: 'Twisted Fate',
+    Release: '2009',
+    Gender: 'Male',
+    Lane: 'Middle',
+    Species: 'Human, Magicborn',
+    Resource: 'Mana',
+    Range: 'Ranged',
+    Region: 'Bilgewater',
+  },
+  {
+    Name: 'Twitch',
+    Release: '2009',
+    Gender: 'Male',
+    Lane: 'Bottom',
+    Species: 'Chemically Altered, Rat',
+    Resource: 'Mana',
+    Range: 'Ranged',
+    Region: 'Zaun',
+  },
+  
+  
+  
+  
+  
+  {
+    Name: 'Udyr',
+    Release: '2009',
+    Gender: 'Male',
+    Lane: 'Jungle, Top',
+    Species: 'Human, Spiritualist',
+    Resource: 'Mana',
+    Range: 'Melee',
+    Region: 'Freljord, Ionia',
+  },
+  {
+    Name: 'Urgot',
+    Release: '2010',
+    Gender: 'Male',
+    Lane: 'Top',
+    Species: 'Chemically Altered, Cyborg, Human',
+    Resource: 'Mana',
+    Range: 'Ranged',
+    Region: 'Noxus, Zaun',
+  },
+
+
+
+
+
+  {
+    Name: 'Varus',
+    Release: '2012',
+    Gender: 'Male',
+    Lane: 'Bottom',
+    Species: 'Darkin, Human',
+    Resource: 'Mana',
+    Range: 'Ranged',
+    Region: 'Ionia, Runeterra, Shurima',
+  },
+  {
+    Name: 'Vayne',
+    Release: '2011',
+    Gender: 'Female',
+    Lane: 'Bottom',
+    Species: 'Human',
+    Resource: 'Mana',
+    Range: 'Ranged',
+    Region: 'Demacia',
+  },
+  {
+    Name: 'Veigar',
+    Release: '2009',
+    Gender: 'Male',
+    Lane: 'Middle',
+    Species: 'Yordle',
+    Resource: 'Mana',
+    Range: 'Ranged',
+    Region: 'Bandle City, Runeterra, Shadow Isles',
+  },
+  {
+    Name: `Vel'Koz`,
+    Release: '2014',
+    Gender: 'Male',
+    Lane: 'Middle, Support',
+    Species: 'Void-Being',
+    Resource: 'Mana',
+    Range: 'Ranged',
+    Region: 'Void',
+  },
+  {
+    Name: 'Vex',
+    Release: '2021',
+    Gender: 'Female',
+    Lane: 'Middle',
+    Species: 'Yordle',
+    Resource: 'Mana',
+    Range: 'Ranged',
+    Region: 'Bandle City, Shadow Isles',
+  },
+  {
+    Name: 'Vi',
+    Release: '2012',
+    Gender: 'Female',
+    Lane: 'Jungle',
+    Species: 'Human',
+    Resource: 'Mana',
+    Range: 'Melee',
+    Region: 'Piltover, Zaun',
+  },
+  {
+    Name: 'Viego',
+    Release: '2021',
+    Gender: 'Male',
+    Lane: 'Jungle',
+    Species: 'Undead',
+    Resource: 'Manaless',
+    Range: 'Melee',
+    Region: 'Camavor, Shadow Isles',
+  },
+  {
+    Name: 'Viktor',
+    Release: '2011',
+    Gender: 'Male',
+    Lane: 'Middle',
+    Species: 'Cyborg, Human',
+    Resource: 'Mana',
+    Range: 'Ranged',
+    Region: 'Piltover, Zaun',
+  },
+  {
+    Name: 'Vladimir',
+    Release: '2010',
+    Gender: 'Male',
+    Lane: 'Middle',
+    Species: 'Human, Magically Altered',
+    Resource: 'Bloodthirst',
+    Range: 'Ranged',
+    Region: 'Camavor, Noxus, Shadow Isles',
+  },
+  {
+    Name: 'Volibear',
+    Release: '2011',
+    Gender: 'Male',
+    Lane: 'Jungle, Top',
+    Species: 'God, Spirit',
+    Resource: 'Mana',
+    Range: 'Melee',
+    Region: 'Freljord',
+  },
+
+
+
+
+
+  {
+    Name: 'Warwick',
+    Release: '2009',
+    Gender: 'Male',
+    Lane: 'Jungle, Top',
+    Species: 'Chemically Altered, Cybord, Human',
+    Resource: 'Mana',
+    Range: 'Melee',
+    Region: 'Zaun',
+  },
+  {
+    Name: 'Wukong',
+    Release: '2011',
+    Gender: 'Male',
+    Lane: 'Jungle, Top',
+    Species: 'Vastayan',
+    Resource: 'Mana',
+    Range: 'Melee',
+    Region: 'Ionia',
+  },
+
+
+
+
+
+  {
+    Name: 'Xayah',
+    Release: '2017',
+    Gender: 'Female',
+    Lane: 'Bottom',
+    Species: 'Vastayan',
+    Resource: 'Mana',
+    Range: 'Ranged',
+    Region: 'Ionia',
+  },
+  {
+    Name: 'Xerath',
+    Release: '2011',
+    Gender: 'Male',
+    Lane: 'Middle, Support',
+    Species: 'God-Warrior',
+    Resource: 'Mana',
+    Range: 'Ranged',
+    Region: 'Shurima',
+  },
+  {
+    Name: 'Xin Zhao',
+    Release: '2010',
+    Gender: 'Male',
+    Lane: 'Jungle',
+    Species: 'Human',
+    Resource: 'Mana',
+    Range: 'Melee',
+    Region: 'Demacia, Ionia, Noxus',
+  },
+
+
+
+
+
+  {
+    Name: 'Yasuo',
+    Release: '2013',
+    Gender: 'Male',
+    Lane: 'Middle',
+    Species: 'Human, Magicborn',
+    Resource: 'Flow',
+    Range: 'Melee',
+    Region: 'Ionia',
+  },
+  {
+    Name: 'Yone',
+    Release: '2020',
+    Gender: 'Male',
+    Lane: 'Middle, Top',
+    Species: 'Human, Magically Altered',
+    Resource: 'Manaless',
+    Range: 'Melee',
+    Region: 'Ionia',
+  },
+  {
+    Name: 'Yorick',
+    Release: '2011',
+    Gender: 'Male',
+    Lane: 'Top',
+    Species: 'Human, Magically Altered',
+    Resource: 'Mana',
+    Range: 'Melee',
+    Region: 'Shadow Isles',
+  },
+  {
+    Name: 'Yuumi',
+    Release: '2019',
+    Gender: 'Female',
+    Lane: 'Support',
+    Species: 'Cat, Magically Altered',
+    Resource: 'Mana',
+    Range: 'Ranged',
+    Region: 'Bandle City',
+  },
+  {
+    Name: 'Zac',
+    Release: '2013',
+    Gender: 'Male',
+    Lane: 'Jungle, Top',
+    Species: 'Golem',
+    Resource: 'Health Costs',
+    Range: 'Melee',
+    Region: 'Zaun',
+  },
+  {
+    Name: 'Zed',
+    Release: '2012',
+    Gender: 'Male',
+    Lane: 'Middle',
+    Species: 'Human, Magically Altered',
+    Resource: 'Energy',
+    Range: 'Melee',
+    Region: 'Ionia',
+  },
+  {
+    Name: 'Zeri',
+    Release: '2022',
+    Gender: 'Female',
+    Lane: 'Bottom',
+    Species: 'Human, Magicborn',
+    Resource: 'Mana',
+    Range: 'Ranged',
+    Region: 'Zaun',
+  },
+  {
+    Name: 'Ziggs',
+    Release: '2012',
+    Gender: 'Male',
+    Lane: 'Bottom, Middle',
+    Species: 'Yordle',
+    Resource: 'Mana',
+    Range: 'Ranged',
+    Region: 'Zaun',
+  },
+  {
+    Name: 'Zilean',
+    Release: '2009',
+    Gender: 'Male',
+    Lane: 'Support',
+    Species: 'Human, Magicborn',
+    Resource: 'Mana',
+    Range: 'Ranged',
+    Region: 'Icathia, Runeterra, Shurima',
+  },
+  {
+    Name: 'Zoe',
+    Release: '2017',
+    Gender: 'Female',
+    Lane: 'Middle',
+    Species: 'Aspect, Human',
+    Resource: 'Mana',
+    Range: 'Ranged',
+    Region: 'Targon',
+  },
+  {
+    Name: 'Zyra',
+    Release: '2012',
+    Gender: 'Female',
+    Lane: 'Support',
+    Species: 'Unknown',
+    Resource: 'Mana',
+    Range: 'Ranged',
+    Region: 'Ixtal',
+  },
+]
+
+
+let randomObjekti = null;
+
+function valitseRandomObject() {
+  randomObjekti = lista[Math.floor(Math.random() * lista.length)];
+}
+
+
+</script>
+
+<main>
+
+  <button on:click={valitseRandomObject}>Random Champion</button>
+
+  <Painike />
+
+  {#if randomObjekti}
+    <div transition:fade>
+      {#each Object.keys(randomObjekti) as ominaisuus}
+        <p>{ominaisuus}: {randomObjekti[ominaisuus]}</p>
+      {/each}
+    </div>
+  {/if}
+
+
+</main>
+
+<style>
+
+button {
+  color:rgb(255, 213, 77);
+  border: 2px solid #4e4e4e;
+  padding: 10px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+}
+
+p {
+  border: 2px solid #4e4e4e;
+  padding: 5px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  color:rgb(255, 213, 77);
+  background-color: rgb(27, 27, 27);
+}
+
+</style>
+
+
